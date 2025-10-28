@@ -1,0 +1,38 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "testplan",
+      "camelcase": "Testplan",
+      "title": "Testplan",
+      "scope": "source.testplan",
+      "file-types": [
+        "testplan.txt"
+      ],
+      "injection-regex": "^testplan$",
+      "class-name": "TreeSitterTestplan"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Grammar for Ocimatic testplans",
+    "authors": [
+      {
+        "name": "Nico Lehmann"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/OCIoficial/tree-sitter-testplan"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
