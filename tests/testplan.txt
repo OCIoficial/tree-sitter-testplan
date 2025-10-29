@@ -1,0 +1,9 @@
+[Subtask 1]
+@validator asdf
+@validator asdf
+
+a ; copy hola
+b ; echo chao perra
+c ; generator.rs asdf asdf
+
+
