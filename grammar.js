@@ -30,7 +30,7 @@ module.exports = grammar({
 
     copy: ($) => seq("copy", $.arg),
     echo: ($) => seq("echo", repeat($.arg)),
-    generator: ($) => seq($.arg, repeat($.arg)),
+    generator: ($) => seq(field("command", $.arg), repeat($.arg)),
 
     arg: ($) => choice($.string_literal, $.word),
 
