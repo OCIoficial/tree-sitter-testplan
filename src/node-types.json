@@ -1,5 +1,19 @@
 [
   {
+    "type": "directive",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "extends",
+        "named": true
+      },
+      {
+        "type": "validator",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "arg",
     "named": true,
     "fields": {},
@@ -35,11 +49,11 @@
           "named": true
         },
         {
-          "type": "generator",
+          "type": "group_name",
           "named": true
         },
         {
-          "type": "group_name",
+          "type": "script",
           "named": true
         }
       ]
@@ -55,25 +69,6 @@
       "types": [
         {
           "type": "arg",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "directive",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "extends",
-          "named": true
-        },
-        {
-          "type": "validator",
           "named": true
         }
       ]
@@ -110,7 +105,7 @@
     }
   },
   {
-    "type": "generator",
+    "type": "script",
     "named": true,
     "fields": {
       "command": {
@@ -150,6 +145,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "string_literal",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "subtask",
@@ -209,6 +209,10 @@
     "named": false
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
     "type": ";",
     "named": false
   },
@@ -251,10 +255,6 @@
   },
   {
     "type": "number",
-    "named": true
-  },
-  {
-    "type": "string_literal",
     "named": true
   },
   {

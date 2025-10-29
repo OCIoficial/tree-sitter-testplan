@@ -8,6 +8,7 @@
     "name": "Nico Lehmann"
   },
   "main": "bindings/node",
+  "type": "module",
   "types": "bindings/node",
   "keywords": [
     "incremental",

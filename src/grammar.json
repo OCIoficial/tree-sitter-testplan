@@ -138,7 +138,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "generator"
+              "name": "script"
             }
           ]
         },
@@ -177,7 +177,7 @@
         }
       ]
     },
-    "generator": {
+    "script": {
       "type": "SEQ",
       "members": [
         {
@@ -215,35 +215,25 @@
       "value": "[^\\s\"]+"
     },
     "string_literal": {
-      "type": "TOKEN",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "\""
-          },
-          {
-            "type": "PATTERN",
-            "value": "([^\"\\\\]|\\\\.)*"
-          },
-          {
-            "type": "IMMEDIATE_TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "\""
-            }
-          }
-        ]
-      }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "PATTERN",
+          "value": "([^\"\\\\]|\\\\.)*"
+        },
+        {
+          "type": "STRING",
+          "value": "\""
+        }
+      ]
     },
     "group_name": {
       "type": "PATTERN",
       "value": "[a-zA-Z0-9_-]+"
-    },
-    "_newline": {
-      "type": "STRING",
-      "value": "\n"
     },
     "number": {
       "type": "PATTERN",
@@ -252,6 +242,10 @@
     "comment": {
       "type": "PATTERN",
       "value": "#.*"
+    },
+    "_newline": {
+      "type": "STRING",
+      "value": "\n"
     }
   },
   "extras": [
@@ -268,6 +262,8 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": [],
+  "supertypes": [
+    "directive"
+  ],
   "reserved": {}
 }

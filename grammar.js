@@ -7,13 +7,15 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-module.exports = grammar({
+export default grammar({
   name: "testplan",
 
   extras: ($) => [
     /[ \t]/, // Ignore spaces and tabs, newlines are handled explicitly
     $.comment, // Comments
   ],
+
+  supertypes: ($) => [$.directive],
 
   rules: {
     source_file: ($) => repeat($.subtask),
@@ -26,21 +28,21 @@ module.exports = grammar({
     validator: ($) => seq("@validator", $.arg, $._newline),
 
     command: ($) =>
-      seq($.group_name, ";", choice($.copy, $.echo, $.generator), $._newline),
+      seq($.group_name, ";", choice($.copy, $.echo, $.script), $._newline),
 
     copy: ($) => seq("copy", $.arg),
     echo: ($) => seq("echo", repeat($.arg)),
-    generator: ($) => seq(field("command", $.arg), repeat($.arg)),
+    script: ($) => seq(field("command", $.arg), repeat($.arg)),
 
     arg: ($) => choice($.string_literal, $.word),
 
     word: (_) => /[^\s"]+/,
-    string_literal: (_) =>
-      token(seq('"', /([^"\\]|\\.)*/, token.immediate('"'))),
+    string_literal: (_) => seq('"', /([^"\\]|\\.)*/, '"'),
 
     group_name: (_) => /[a-zA-Z0-9_-]+/,
-    _newline: (_) => "\n",
     number: (_) => /\d+/,
+
     comment: (_) => /#.*/,
+    _newline: (_) => "\n",
   },
 });
