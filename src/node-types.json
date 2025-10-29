@@ -18,10 +18,6 @@
     "named": true,
     "subtypes": [
       {
-        "type": "\n",
-        "named": false
-      },
-      {
         "type": "command",
         "named": true
       },

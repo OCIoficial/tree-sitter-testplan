@@ -23,8 +23,17 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "item"
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "item"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_newline"
+              }
+            ]
           }
         }
       ]
@@ -64,10 +73,6 @@
         {
           "type": "SYMBOL",
           "name": "command"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_newline"
         }
       ]
     },
@@ -98,10 +103,6 @@
         {
           "type": "SYMBOL",
           "name": "number"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_newline"
         }
       ]
     },
@@ -115,10 +116,6 @@
         {
           "type": "SYMBOL",
           "name": "arg"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_newline"
         }
       ]
     },
@@ -149,10 +146,6 @@
               "name": "script"
             }
           ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_newline"
         }
       ]
     },
@@ -259,7 +252,7 @@
   "extras": [
     {
       "type": "PATTERN",
-      "value": "[ \\t]"
+      "value": "\\s"
     },
     {
       "type": "SYMBOL",

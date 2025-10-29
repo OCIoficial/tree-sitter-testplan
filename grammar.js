@@ -11,7 +11,7 @@ export default grammar({
   name: "testplan",
 
   extras: ($) => [
-    /[ \t]/, // Ignore spaces and tabs, newlines are handled explicitly
+    /\s/, // Ignore whitespaces
     $.comment, // Comments
   ],
 
@@ -19,16 +19,16 @@ export default grammar({
 
   rules: {
     source_file: ($) => repeat($.subtask),
-    subtask: ($) => seq(field("header", $.subtask_header), repeat($.item)),
+    subtask: ($) =>
+      seq(field("header", $.subtask_header), repeat(seq($.item, $._newline))),
     subtask_header: ($) => seq("[", "Subtask", $.number, "]", $._newline),
-    item: ($) => choice($.directive, $.command, $._newline),
+    item: ($) => choice($.directive, $.command),
 
     directive: ($) => choice($.extends, $.validator),
-    extends: ($) => seq("@extends", "subtask", $.number, $._newline),
-    validator: ($) => seq("@validator", $.arg, $._newline),
+    extends: ($) => seq("@extends", "subtask", $.number),
+    validator: ($) => seq("@validator", $.arg),
 
-    command: ($) =>
-      seq($.group_name, ";", choice($.copy, $.echo, $.script), $._newline),
+    command: ($) => seq($.group_name, ";", choice($.copy, $.echo, $.script)),
 
     copy: ($) => seq("copy", $.arg),
     echo: ($) => seq("echo", repeat($.arg)),
