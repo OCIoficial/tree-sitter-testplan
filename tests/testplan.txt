@@ -16,6 +16,7 @@
   manual ; copy testplan/manual/*.in
   rand ; gen_random.py 100 1111
   rand ; gen_random.py 100 1111
+  #hola
 
 [Subtask 3]
   @extends subtask 1

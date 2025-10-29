@@ -15,13 +15,13 @@ export default grammar({
     $.comment, // Comments
   ],
 
-  supertypes: ($) => [$.directive],
+  supertypes: ($) => [$.directive, $.item],
 
   rules: {
     source_file: ($) => repeat($.subtask),
-    subtask: ($) =>
-      seq($.subtask_header, repeat(choice($.directive, $.command, $._newline))),
+    subtask: ($) => seq(field("header", $.subtask_header), repeat($.item)),
     subtask_header: ($) => seq("[", "Subtask", $.number, "]", $._newline),
+    item: ($) => choice($.directive, $.command, $._newline),
 
     directive: ($) => choice($.extends, $.validator),
     extends: ($) => seq("@extends", "subtask", $.number, $._newline),

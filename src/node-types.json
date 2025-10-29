@@ -14,6 +14,24 @@
     ]
   },
   {
+    "type": "item",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "\n",
+        "named": false
+      },
+      {
+        "type": "command",
+        "named": true
+      },
+      {
+        "type": "directive",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "arg",
     "named": true,
     "fields": {},
@@ -154,21 +172,24 @@
   {
     "type": "subtask",
     "named": true,
-    "fields": {},
+    "fields": {
+      "header": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "subtask_header",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "command",
-          "named": true
-        },
-        {
-          "type": "directive",
-          "named": true
-        },
-        {
-          "type": "subtask_header",
+          "type": "item",
           "named": true
         }
       ]
